@@ -1,0 +1,96 @@
+﻿@model OrderVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1 align="center" >Adding a Hamburger Order</h1>
+
+<div class="row d-flex justify-content-between">
+    <div class="col-md-4 ">
+        <img class="mark" src="img/75e792d24a89eda4ecc18ed029f138de_640x640.jpg" width="300" />
+           <form asp-action="GiveOrder" class="form-group" >      
+                     <div >  
+                         @foreach (var item in Enum.GetValues(typeof(Size)))
+                          {
+                                 <div class="form-check form-check-inline form-select-sm">
+                                     <input class="form-check-input" type="radio" asp-for="Order.Size" value="@item">
+                                     <label class="form-check-label">@item</label>
+                                 </div>
+                             }
+                         
+                     </div>
+                     <br/>
+                 <div class="mt-2">
+                     <select class="form-select form-select-sm mb-3" aria-label=".form-select-md example"
+                             asp-items="new SelectList(Model.MenuList)"
+                             asp-for="Menu.MenuName">
+                         <option selected>Select A Menu</option>
+
+                     </select>
+                 </div>
+
+                 <div class="mt-2">
+                  
+                        
+                         @foreach (var item in Model.ExtraList)
+                         {
+                         <div class="form-check form-check-inline form-select-sm">
+                                 <input class="form-check-input" type="radio" asp-for="Extra.Name" value="@item.Name">
+                                 <label class="form-check-label">@item.Name</label>
+                             </div>
+                         }
+
+
+                 </div>
+                     <button class="btn btn-outline-dark" type="submit">Add Order</button>
+        </form>
+        
+
+
+    </div>  
+    <div class="col-md-6 col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Menu
+                    </th>
+                    <th>
+                        Extras
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderList)
+                {
+                    <tr>
+                        <td>
+                            @item.Menu.MenuName  @item.Menu.Price TL 
+                        </td>
+                        <td>
+                           @item.Extra.Name @item.Extra.Price TL
+                        </td>
+                        <td>
+                            @item.Size
+                        </td>
+                        <td>
+                            @item.TotalPrice TL
+                        </td>
+
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>        

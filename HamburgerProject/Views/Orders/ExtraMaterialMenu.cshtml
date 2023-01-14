@@ -1,0 +1,107 @@
+﻿@model OrderVM
+
+@{
+    ViewData["Title"] = "ExtraMaterialMenu";
+}
+
+
+<div>
+    <h1 align="center">Adding a Extra Material</h1>
+    <form  asp-action="AddExtra">
+        <div class="d-flex justify-content-sm-evenly">
+        <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Extra material name:</label>
+                <input  class="form-control" asp-for="Extra.Name" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Price:</label>
+            <input  class="form-control" asp-for="Extra.Price">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-dark btn-sm" asp-action="AddExtra" asp-controller="Orders">Add</button>
+        </form>
+    
+    
+        <h1 align="center">Menus</h1>
+    <div class="col-md-6 col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Menu Name
+                    </th>                   
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model.MenuList)
+                    {
+                        <tr>
+                            <td>
+                                @item.MenuName  
+                            </td>
+                            <td>
+                                @item.Price TL
+                            </td>
+                            
+                            <td>
+                            <button class="btn btn-dark btn-sm" asp-action="Update" asp-controller="Orders" asp-route-id="@item.ID">Update</button>
+                            </td>
+                            <td>
+                            <button class="btn btn-dark btn-sm" asp-action="Delete" asp-controller="Orders" asp-route-id="@item.ID">Delete</button>
+                            </td>
+                        </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <h1 align="center">Extras</h1>
+    <div class="col-md-6 col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Extra Material Name
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ExtraList)
+                {
+                    <tr>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Price TL
+                        </td>
+
+                        <td>
+                            <button class="btn btn-dark btn-sm" asp-action="UpdateExtra" asp-controller="Orders" asp-route-id="@item.ID">Update</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-dark btn-sm" asp-action="DeleteExtra" asp-controller="Orders" asp-route-id="@item.ID">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div>
