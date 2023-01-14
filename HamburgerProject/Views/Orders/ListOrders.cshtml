@@ -1,0 +1,86 @@
+﻿@model OrdersVM
+
+@{
+    ViewData["Title"] = "ListOrders";
+}
+
+<div>
+    <h1 align="center">Orders</h1>
+    <div class="d-flex justify-content-sm-evenly">
+        <div class="card" style="width: 18rem;">
+             <img src="~/img/75e792d24a89eda4ecc18ed029f138de_640x640.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">@Model.SumOfTotalPrice</h5>
+                <p class="card-text">Total Turnoversa</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+             <img src="~/img/2970436_810x458.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">@Model.CountOfOrder</h5>
+                 <p class="card-text">Total Order</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+             <img src="~/img/sos-cesitleri-sosyal-yemek-tarifleri-800x600.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                 <h5 class="card-title">@Model.CountOfExtra</h5>
+                <p class="card-text">
+                    Number of Extra Material Sold
+                </p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+             <img src="~/img/mantarli-burger-menu1533239687_1.jpg" class="card-img-top" alt="...">
+             <div class="card-body">
+                <h5 class="card-title">@Model.CountOfOrder</h5>
+                <p class="card-text">Number of Menus Sold</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Menu
+                    </th>
+                    <th>
+                        Extras
+                    </th>
+                    <th>
+                        Size
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderList)
+                {
+                    <tr>
+                        <td>
+                            @item.Menu.MenuName  @item.Menu.Price TL
+                        </td>
+                        <td>
+                            @item.Extra.Name @item.Extra.Price TL
+                        </td>
+                        <td>
+                            @item.Size
+                        </td>
+                        <td>
+                            @item.TotalPrice TL
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

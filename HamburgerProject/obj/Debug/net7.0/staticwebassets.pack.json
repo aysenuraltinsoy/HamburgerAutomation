@@ -13,8 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\aalti\\Desktop\\BilgeAdam\\mvc\\HamburgerProject\\HamburgerProject\\wwwroot\\img\\2970436_810x458.jpg",
+      "PackagePath": "staticwebassets\\img\\2970436_810x458.jpg"
+    },
+    {
       "Id": "C:\\Users\\aalti\\Desktop\\BilgeAdam\\mvc\\HamburgerProject\\HamburgerProject\\wwwroot\\img\\75e792d24a89eda4ecc18ed029f138de_640x640.jpg",
       "PackagePath": "staticwebassets\\img\\75e792d24a89eda4ecc18ed029f138de_640x640.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aalti\\Desktop\\BilgeAdam\\mvc\\HamburgerProject\\HamburgerProject\\wwwroot\\img\\mantarli-burger-menu1533239687_1.jpg",
+      "PackagePath": "staticwebassets\\img\\mantarli-burger-menu1533239687_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\aalti\\Desktop\\BilgeAdam\\mvc\\HamburgerProject\\HamburgerProject\\wwwroot\\img\\sos-cesitleri-sosyal-yemek-tarifleri-800x600.jpg",
+      "PackagePath": "staticwebassets\\img\\sos-cesitleri-sosyal-yemek-tarifleri-800x600.jpg"
     },
     {
       "Id": "C:\\Users\\aalti\\Desktop\\BilgeAdam\\mvc\\HamburgerProject\\HamburgerProject\\wwwroot\\js\\site.js",

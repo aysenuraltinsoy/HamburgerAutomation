@@ -10,10 +10,7 @@ namespace HamburgerProject.Models.Entities
         public int ID { get; set; }
         public string MenuName { get; set; }
         public decimal Price { get; set; }
-
-        [ForeignKey("Order")]
-        public int? OrderID { get; set; }
-        public virtual Order Order { get; set; }
+        public virtual List<Order> Orders { get; set; }
         public override string ToString()
         {
             return MenuName;

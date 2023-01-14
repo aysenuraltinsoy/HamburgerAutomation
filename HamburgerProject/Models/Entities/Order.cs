@@ -11,7 +11,8 @@ namespace HamburgerProject.Models.Entities
         public decimal TotalPrice { get; set; }
         public Enum.Size Size { get; set; }
         public virtual Menu Menu{ get; set; }
-        public virtual Extra Extra { get; set; }
+        public virtual Extra? Extra { get; set; }
 
+        //public Status Status { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 
 <div>
     <h1 align="center">Adding a Extra Material</h1>
-    <form  asp-action="AddExtra">
+    <form asp-action="AddExtra" align="center">
         <div class="d-flex justify-content-sm-evenly">
         <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Extra material name:</label>
@@ -19,8 +19,24 @@
             </div>
         </div>
         <button type="submit" class="btn btn-dark btn-sm" asp-action="AddExtra" asp-controller="Orders">Add</button>
-        </form>
-    
+    </form>
+
+
+    <form asp-action="AddMenu" align="center" >
+        <div class="d-flex justify-content-sm-evenly">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Menu name:</label>
+                <input class="form-control" asp-for="Menu.MenuName">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Price:</label>
+                <input class="form-control" asp-for="Menu.Price">
+            </div>
+        </div>
+        <input  type="submit" class="btn btn-dark btn-sm" value="Add" />
+    </form>
+
+
     
         <h1 align="center">Menus</h1>
     <div class="col-md-6 col-lg-8">
@@ -50,10 +66,10 @@
                             </td>
                             
                             <td>
-                            <button class="btn btn-dark btn-sm" asp-action="Update" asp-controller="Orders" asp-route-id="@item.ID">Update</button>
+                            <a class="btn btn-dark btn-sm" asp-action="UpdateMenu" asp-controller="Orders" asp-route-id="@item.ID">Update</a>
                             </td>
                             <td>
-                            <button class="btn btn-dark btn-sm" asp-action="Delete" asp-controller="Orders" asp-route-id="@item.ID">Delete</button>
+                            <a class="btn btn-dark btn-sm" asp-action="DeleteMenu" asp-controller="Orders" asp-route-id="@item.ID">Delete</a>
                             </td>
                         </tr>
                     }
@@ -91,10 +107,10 @@
                         </td>
 
                         <td>
-                            <button class="btn btn-dark btn-sm" asp-action="UpdateExtra" asp-controller="Orders" asp-route-id="@item.ID">Update</button>
+                            <a class="btn btn-dark btn-sm" asp-action="UpdateExtra" asp-controller="Orders" asp-route-id="@item.ID">Update</a>
                         </td>
                         <td>
-                            <button class="btn btn-dark btn-sm" asp-action="DeleteExtra" asp-controller="Orders" asp-route-id="@item.ID">Delete</button>
+                            <a class="btn btn-dark btn-sm" asp-action="DeleteExtra" asp-controller="Orders" asp-route-id="@item.ID">Delete</a>
                         </td>
                     </tr>
                 }

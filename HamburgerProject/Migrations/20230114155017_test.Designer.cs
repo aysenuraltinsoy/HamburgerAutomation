@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HamburgerProject.Migrations
 {
     [DbContext(typeof(HamburgerDbContext))]
-    [Migration("20230111213503_de")]
-    partial class de
+    [Migration("20230114155017_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,17 +37,10 @@ namespace HamburgerProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderID")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderID")
-                        .IsUnique()
-                        .HasFilter("[OrderID] IS NOT NULL");
 
                     b.ToTable("Extras");
                 });
@@ -64,17 +57,10 @@ namespace HamburgerProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderID")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderID")
-                        .IsUnique()
-                        .HasFilter("[OrderID] IS NOT NULL");
 
                     b.ToTable("Menus");
                 });
@@ -87,6 +73,12 @@ namespace HamburgerProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<int?>("ExtraID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MenuID")
+                        .HasColumnType("int");
+
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
@@ -95,34 +87,38 @@ namespace HamburgerProject.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("ExtraID");
+
+                    b.HasIndex("MenuID");
+
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("HamburgerProject.Models.Entities.Extra", b =>
-                {
-                    b.HasOne("HamburgerProject.Models.Entities.Order", "Order")
-                        .WithOne("Extra")
-                        .HasForeignKey("HamburgerProject.Models.Entities.Extra", "OrderID");
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("HamburgerProject.Models.Entities.Menu", b =>
-                {
-                    b.HasOne("HamburgerProject.Models.Entities.Order", "Order")
-                        .WithOne("Menu")
-                        .HasForeignKey("HamburgerProject.Models.Entities.Menu", "OrderID");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("HamburgerProject.Models.Entities.Order", b =>
                 {
-                    b.Navigation("Extra")
+                    b.HasOne("HamburgerProject.Models.Entities.Extra", "Extra")
+                        .WithMany("Orders")
+                        .HasForeignKey("ExtraID");
+
+                    b.HasOne("HamburgerProject.Models.Entities.Menu", "Menu")
+                        .WithMany("Orders")
+                        .HasForeignKey("MenuID")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Menu")
-                        .IsRequired();
+                    b.Navigation("Extra");
+
+                    b.Navigation("Menu");
+                });
+
+            modelBuilder.Entity("HamburgerProject.Models.Entities.Extra", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("HamburgerProject.Models.Entities.Menu", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

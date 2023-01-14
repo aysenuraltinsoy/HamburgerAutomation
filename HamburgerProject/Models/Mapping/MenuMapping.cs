@@ -11,7 +11,8 @@ namespace HamburgerProject.Models.Mapping
         public void Configure(EntityTypeBuilder<Menu> builder)
         {
             builder.Property(x => x.ID).IsRequired(true);  
-            builder.Property(x => x.OrderID).IsRequired(false);  
+         
+
          
         }
     }
